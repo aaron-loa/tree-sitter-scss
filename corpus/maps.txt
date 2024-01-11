@@ -10,7 +10,6 @@ $map: (
     "nest": #123456
   )
 );
-
 ---
 (stylesheet (declaration (variable_name) 
   (map 
@@ -25,3 +24,11 @@ $map: (
     )
 ))
 
+================
+EMPTY MAP
+================
+
+$map: ();
+
+---
+(stylesheet (declaration (variable_name) (map)))
