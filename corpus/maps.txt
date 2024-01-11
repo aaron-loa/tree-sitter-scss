@@ -1,0 +1,27 @@
+================
+MAPS
+================
+
+$map: (
+  "key": "value",
+  "key2": #fff,
+  "key3": #000,
+  "nested": (
+    "nest": #123456
+  )
+);
+
+---
+(stylesheet (declaration (variable_name) 
+  (map 
+    (map_entry (string_value) (string_value))
+    (map_entry (string_value) (color_value))
+    (map_entry (string_value) (color_value))
+    (map_entry 
+    (string_value) (map (map_entry 
+        (string_value) (color_value)
+        ))
+      )
+    )
+))
+

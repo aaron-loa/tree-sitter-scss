@@ -303,7 +303,7 @@ module.exports = grammar({
     selector_query: ($) => seq("selector", "(", $._selector, ")"),
 
     // Property Values
-
+    // this is what we have to extend to support maps
     _value: ($) =>
       prec(
         -1,
@@ -317,11 +317,15 @@ module.exports = grammar({
           $.string_value,
           $.binary_expression,
           $.parenthesized_value,
-          $.call_expression
+          $.call_expression,
+          $.map
         )
       ),
 
     parenthesized_value: ($) => seq("(", $._value, ")"),
+
+    map: ($) => seq("(", sep(",",$.map_entry), ")"),
+    map_entry: ($) => seq($.string_value, ":", $._value),
 
     color_value: ($) => seq("#", token.immediate(/[0-9a-fA-F]{3,8}/)),
 
